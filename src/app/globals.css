@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* ── HankGainz: Miami Vice / 80s neon, dark contrast ───────────────────────── */
+:root {
+  --bg: #07021a;
+  --bg-2: #0e0530;
+  --surface: rgb(22 10 56 / 0.62);
+  --surface-2: rgb(34 16 80 / 0.55);
+  --line: rgb(255 255 255 / 0.08);
+  --line-strong: rgb(255 255 255 / 0.16);
+  --text: #f6f0ff;
+  --muted: #a99ad6;
+  --faint: #6c5f9a;
+
+  --pink: #ff2a6d;
+  --hot: #ff4fd8;
+  --cyan: #05d9e8;
+  --purple: #b967ff;
+  --orange: #ff9e3d;
+  --sun: #ffd319;
+  --mint: #01ffc3;
+  --red: #ff3864;
+
+  --glow-pink: 0 0 8px rgb(255 42 109 / 0.7), 0 0 24px rgb(255 42 109 / 0.35);
+  --glow-cyan: 0 0 8px rgb(5 217 232 / 0.7), 0 0 24px rgb(5 217 232 / 0.35);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-pink: var(--pink);
+  --color-hot: var(--hot);
+  --color-cyan: var(--cyan);
+  --color-purple: var(--purple);
+  --color-orange: var(--orange);
+  --color-sun: var(--sun);
+  --color-mint: var(--mint);
+  --color-red: var(--red);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-dafoe), cursive;
+}
+
+html {
+  color-scheme: dark;
+  background: var(--bg);
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at -10% -10%, rgb(255 42 109 / 0.18), transparent 60%),
+    radial-gradient(900px 600px at 110% 0%, rgb(185 103 255 / 0.16), transparent 60%),
+    radial-gradient(1000px 700px at 100% 110%, rgb(5 217 232 / 0.14), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* Synthwave horizon grid, fixed behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: auto 0 0 0;
+  height: 42vh;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(to top, rgb(255 42 109 / 0.10), transparent 70%),
+    repeating-linear-gradient(to right, rgb(185 103 255 / 0.13) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(to top, rgb(185 103 255 / 0.13) 0 1px, transparent 1px 32px);
+  transform: perspective(420px) rotateX(58deg);
+  transform-origin: bottom;
+  mask-image: linear-gradient(to top, black, transparent 85%);
+}
+
+@utility glow-pink {
+  text-shadow: var(--glow-pink);
+}
+@utility glow-cyan {
+  text-shadow: var(--glow-cyan);
+}
+@utility glow-mint {
+  text-shadow: 0 0 8px rgb(1 255 195 / 0.65), 0 0 22px rgb(1 255 195 / 0.3);
+}
+@utility neon-border {
+  border: 1px solid var(--line);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 10px 40px -12px rgb(0 0 0 / 0.6);
+}
+@utility chrome-text {
+  background: linear-gradient(180deg, #ffffff 0%, #c9f7ff 38%, #05d9e8 52%, #2a1a6e 53%, #b967ff 75%, #ffd1f0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility sunset-text {
+  background: linear-gradient(90deg, var(--sun), var(--orange) 30%, var(--pink) 65%, var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card {
+  position: relative;
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 18px 50px -20px rgb(0 0 0 / 0.75);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 18% auto 18%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent, var(--pink)), transparent);
+  opacity: 0.8;
+}
+
+/* Recharts dark tweaks */
+.recharts-cartesian-grid line {
+  stroke: rgb(185 103 255 / 0.12);
+}
+.recharts-text {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.recharts-tooltip-cursor {
+  fill: rgb(255 255 255 / 0.04);
+}
+
+::selection {
+  background: rgb(255 42 109 / 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

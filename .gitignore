@@ -1,0 +1,40 @@
+# Personal health data: never commit
+data/raw/**
+data/processed/**
+!data/raw/
+!data/raw/*/
+!data/processed/
+!**/.gitkeep
+*.duckdb
+*.duckdb.wal
+*.sqlite
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+node_modules/
+.next/
+next-env.d.ts
+coverage/
+playwright-report/
+test-results/
+export.zip
+export.xml
+
+# Secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+.streamlit/secrets.toml
